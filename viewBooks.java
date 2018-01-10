@@ -19,6 +19,9 @@ public class viewBooks extends AppCompatActivity {
     private ListView bList;
     DBHandler mydb2;
 
+    private String itemAuth, itemLocation, itemUser;
+    private int itemId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,27 +49,14 @@ public class viewBooks extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = adapterView.getItemAtPosition(i).toString();
 
-                Cursor data = mydb2.getID(name);
-                int itemId= -1;
-                while(data.moveToNext()){
-                    itemId = data.getInt(0);
-                }
-                Cursor bookData = mydb2.getAuth(name);
-                String itemAuth = "";
-                while(bookData.moveToNext()){
-                    itemAuth = bookData.getString(0);
-                }
-                Cursor locationData = mydb2.getLocation(name);
-                String itemLocation = "";
-                while(locationData.moveToNext()){
-                    itemLocation = locationData.getString(0);
-                }
-                Cursor UserData = mydb2.getUser(name);
-                String itemUser = "";
-                while(UserData.moveToNext()){
-                    itemUser = UserData.getString(0);
-                }
 
+                Cursor csr = mydb2.rowData(name);
+                while(csr.moveToNext()) {
+                    itemId = csr.getInt(0);
+                    itemAuth = csr.getString(2);
+                    itemLocation = csr.getString(3);
+                    itemUser = csr.getString(4);
+                }
 
                 if(itemId> -1){
                     Intent editScreenIntent = new Intent(viewBooks.this, EditBooksActivity.class);
