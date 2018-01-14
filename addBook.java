@@ -51,13 +51,17 @@ public class addBook extends AppCompatActivity {
                 String addBookName = edtBook.getText().toString().trim();
                 String addBookAuth = edtAuth.getText().toString().trim();
                 String addUser = edtName.getText().toString().trim();
-                bookList b1 = new bookList(addBookName, addBookAuth, addUser);
-                AddData(b1.get_book(), b1.get_author(), b1.get_location(), b1.get_user());
-                Toastmsg("Book has been added!");
+                if (addBookName.isEmpty() || addBookAuth.isEmpty() || addUser.isEmpty() ){
+                    Toastmsg("Please do not leave the field(s) empty");
+                }
+                else{
+                    bookList b1 = new bookList(addBookName, addBookAuth, addUser);
+                    AddData(b1.get_book(), b1.get_author(), b1.get_location(), b1.get_user());
+                    Toastmsg("Book has been added!");
 
-                openMainPage();
+                    openMainPage();
+                }
             }
-
         });
     }
     public void firstBook(){
