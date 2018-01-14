@@ -83,12 +83,18 @@ public class EditBooksActivity extends AppCompatActivity {
                  String edtbook = editBook.getText().toString().trim();
                  String edtAuth = editAuth.getText().toString().trim();
                  String edtUser = editUser.getText().toString().trim();
-                 mydb.updateData(selectId, edtbook, selectName);
-                 mydb.updateAuth(selectId, edtAuth, selectAuth);
-                 mydb.updateUser(selectId, edtUser, selectUser);
-                 openMainPage();
+                 if (edtbook.isEmpty() || edtAuth.isEmpty() || edtUser.isEmpty()){
+                     Toastmsg("Please do not leave the field(s) empty");
+                 }
+                 else{
+                     mydb.updateData(selectId, edtbook, selectName);
+                     mydb.updateAuth(selectId, edtAuth, selectAuth);
+                     mydb.updateUser(selectId, edtUser, selectUser);
+                     openMainPage();
 
-                 Toastmsg("Book has been Updated!");
+                     Toastmsg("Book has been Updated!");
+                 }
+
             }
         });
 
