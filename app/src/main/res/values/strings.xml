@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LibraryApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_add_book">addBook</string>
+    <string name="title_activity_view_books">viewBooks</string>
+    <string name="title_activity_edit_books">EditBooksActivity</string>
+    <string name="title_activity_about_us_page">AboutUsPage</string>
+</resources>

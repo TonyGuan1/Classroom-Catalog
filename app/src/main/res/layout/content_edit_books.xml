@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.shashaank.libraryapp."
+    tools:showIn="@layout/activity_edit_books">
+
+
+    <EditText
+        android:id="@+id/editable_item"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/editable_auth"
+        android:layout_marginTop="61dp"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/editable_auth"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editable_item"
+        android:layout_marginTop="47dp"
+        android:layout_toEndOf="@+id/txtauth"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/editable_user"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editable_auth"
+        android:layout_marginTop="49dp"
+        android:layout_toEndOf="@+id/txtauth"
+        android:ems="10"
+        android:gravity="left"
+        android:inputType="textPersonName"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="33dp"
+        android:text="Save" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSave"
+        android:layout_alignBottom="@+id/btnSave"
+        android:layout_alignEnd="@+id/editable_user"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/btnList"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnDelete"
+        android:layout_alignStart="@+id/btnDelete"
+        android:layout_marginBottom="16dp"
+        android:text="View List" />
+
+    <ToggleButton
+        android:id="@+id/toggleCheckout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editable_user"
+        android:layout_below="@+id/editable_user"
+        android:layout_marginTop="42dp"
+        android:text="ToggleButton"
+        android:textOff="In Library"
+        android:textOn="Checked Out" />
+
+    <TextView
+        android:id="@+id/txtbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editable_auth"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:text="Book name:  "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtauth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editable_auth"
+        android:layout_alignStart="@+id/txtbook"
+        android:text="Author name:  "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editable_user"
+        android:layout_alignStart="@+id/txtauth"
+        android:text="User's name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtCheckout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleCheckout"
+        android:layout_alignBottom="@+id/toggleCheckout"
+        android:layout_alignStart="@+id/txtuser"
+        android:text="Book checkout status:"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnOpenAdd"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnList"
+        android:layout_alignParentStart="true"
+        android:text="Add Book" />
+
+</RelativeLayout>
