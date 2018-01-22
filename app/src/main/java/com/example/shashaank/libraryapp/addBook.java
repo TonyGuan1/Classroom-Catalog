@@ -31,7 +31,7 @@ public class addBook extends AppCompatActivity {
         addBook = (Button)findViewById(R.id.addButton);
 
 
-
+// using shared preferences to fix a bug where the first field added after install was blank
         mydb = new DBHandler(this);
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
@@ -48,30 +48,40 @@ public class addBook extends AppCompatActivity {
         addBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //getting text from edittexts
                 String addBookName = edtBook.getText().toString().trim();
                 String addBookAuth = edtAuth.getText().toString().trim();
                 String addUser = edtName.getText().toString().trim();
-                bookList b1 = new bookList(addBookName, addBookAuth, addUser);
-                AddData(b1.get_book(), b1.get_author(), b1.get_location(), b1.get_user());
-                Toastmsg("Book has been added!");
+                //checking for eempty fields
+                if (addBookName.isEmpty() || addBookAuth.isEmpty() || addUser.isEmpty() ){
+                    Toastmsg("Please do not leave the field(s) empty");
+                }
+                else{
+                    // if fields are not empty then send them to other class to make suer each value is proper
+                    bookList b1 = new bookList(addBookName, addBookAuth, addUser);
+                    AddData(b1.get_book(), b1.get_author(), b1.get_location(), b1.get_user());
+                    Toastmsg("Book has been added!");
 
-                openMainPage();
+                    openMainPage();
+                }
             }
-
         });
     }
     public void firstBook(){
             boolean insertData = mydb.addData("", "", "Available", "");
     }
+    // method to add data
     public void AddData(String book, String author, String location, String user) {
         boolean insertData = mydb.addData(book, author, location, user);
     }
 
+    // open the main page
     public void openMainPage(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
+    
+    // method to create toasts
     public void Toastmsg(String message){
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_LONG).show();
