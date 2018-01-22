@@ -19,6 +19,9 @@ public class viewBooks extends AppCompatActivity {
     private ListView bList;
     DBHandler mydb2;
 
+    private String itemAuth, itemLocation, itemUser;
+    private int itemId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +31,18 @@ public class viewBooks extends AppCompatActivity {
 
         bList = (ListView)findViewById(R.id.bList);
         mydb2 = new DBHandler(this);
+        //instance of the database in this class
 
         populateListView();
     }
 
     private void populateListView() {
+        // gets all the data so it can display books in the listview
         Cursor data = mydb2.getData();
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()){
             listData.add(data.getString(1));
+            // 1 means that it adds the book to the listview
         }
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
         bList.setAdapter(adapter);
@@ -46,27 +52,16 @@ public class viewBooks extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String name = adapterView.getItemAtPosition(i).toString();
 
-                Cursor data = mydb2.getID(name);
-                int itemId= -1;
-                while(data.moveToNext()){
-                    itemId = data.getInt(0);
-                }
-                Cursor bookData = mydb2.getAuth(name);
-                String itemAuth = "";
-                while(bookData.moveToNext()){
-                    itemAuth = bookData.getString(0);
-                }
-                Cursor locationData = mydb2.getLocation(name);
-                String itemLocation = "";
-                while(locationData.moveToNext()){
-                    itemLocation = locationData.getString(0);
-                }
-                Cursor UserData = mydb2.getUser(name);
-                String itemUser = "";
-                while(UserData.moveToNext()){
-                    itemUser = UserData.getString(0);
-                }
 
+                Cursor csr = mydb2.rowData(name);
+                while(csr.moveToNext()) {
+                    itemId = csr.getInt(0);
+                    itemAuth = csr.getString(2);
+                    itemLocation = csr.getString(3);
+                    itemUser = csr.getString(4);
+                }
+                // gets all the data from a certain row numbers assosciate with columns,
+                // 1 was already found above in the listview so no book variable needed
 
                 if(itemId> -1){
                     Intent editScreenIntent = new Intent(viewBooks.this, EditBooksActivity.class);
@@ -76,11 +71,13 @@ public class viewBooks extends AppCompatActivity {
                     editScreenIntent.putExtra("location", itemLocation);
                     editScreenIntent.putExtra("user", itemUser);
                     startActivity(editScreenIntent);
+                    //creates an intent to send the information to the edit books page
 
                 }
                 else{
                     Toastmsg("No Id from that name...");
                 }
+                // in case using old list and book is not actually present
 
 
 
@@ -91,5 +88,6 @@ public class viewBooks extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_LONG).show();
     }
+    //method to create toasts
 
 }
