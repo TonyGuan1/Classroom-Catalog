@@ -63,30 +63,9 @@ public class DBHandler extends SQLiteOpenHelper{
         return result;
     }
 
-    public Cursor getID(String name){
+    public Cursor rowData(String name){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        String query = " SELECT " + COL1 + " FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + name + "'";
-        Cursor data = sqLiteDatabase.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getAuth(String name){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        String query = " SELECT " + COL3 + " FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + name + "'";
-        Cursor data = sqLiteDatabase.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getLocation(String name){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        String query = " SELECT " + COL4 + " FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + name + "'";
-        Cursor data = sqLiteDatabase.rawQuery(query, null);
-        return data;
-    }
-
-    public Cursor getUser(String name){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        String query = " SELECT " + COL5 + " FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + name + "'";
+        String query = " SELECT * FROM " + TABLE_NAME + " WHERE " + COL2 + " = '" + name + "'";
         Cursor data = sqLiteDatabase.rawQuery(query, null);
         return data;
     }
