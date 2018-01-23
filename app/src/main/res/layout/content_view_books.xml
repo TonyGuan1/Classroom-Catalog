@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    
+    // use list view to display books
     <ListView
         android:id="@+id/bList"
         android:layout_width="404dp"
