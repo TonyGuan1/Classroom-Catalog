@@ -8,6 +8,7 @@
     tools:context="com.example.shashaank.libraryapp.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    // displays the add book button 
     <Button
         android:id="@+id/btn1"
         android:layout_width="200dp"
@@ -18,7 +19,8 @@
         android:text="Add Book"
         tools:layout_editor_absoluteX="136dp"
         tools:layout_editor_absoluteY="104dp" />
-
+    
+    // displays the view book button
     <Button
         android:id="@+id/btn2"
         android:layout_width="200dp"
@@ -26,7 +28,8 @@
         android:layout_alignStart="@+id/btn3"
         android:layout_centerVertical="true"
         android:text="View Books" />
-
+    
+    // displays the about us button
     <Button
         android:id="@+id/btn3"
         android:layout_width="200dp"
