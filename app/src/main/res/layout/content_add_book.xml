@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.shashaank.libraryapp.addBook"
     tools:showIn="@layout/activity_add_book">
-
+// Interface for adding books
     <EditText
         android:id="@+id/edtBook"
         android:layout_width="wrap_content"
@@ -18,7 +18,8 @@
         android:layout_marginTop="99dp"
         android:ems="10"
         android:inputType="textPersonName" />
-
+    
+// this is the edit text view for author 
     <EditText
         android:id="@+id/edtAuth"
         android:layout_width="wrap_content"
@@ -30,6 +31,7 @@
         android:ems="10"
         android:inputType="textPersonName" />
 
+ // this is the edit text view for the person's name
     <EditText
         android:id="@+id/edtName"
         android:layout_width="wrap_content"
@@ -40,7 +42,7 @@
         android:layout_toEndOf="@+id/txtAuth"
         android:ems="10"
         android:inputType="textPersonName" />
-
+// this is the text view for the title of the book
     <TextView
         android:id="@+id/txtBook"
         android:layout_width="wrap_content"
@@ -50,7 +52,8 @@
         android:layout_marginStart="7dp"
         android:text="Book Name: "
         android:textSize="18sp" />
-
+    
+// this is the text view for the author of the book
     <TextView
         android:id="@+id/txtAuth"
         android:layout_width="wrap_content"
@@ -60,6 +63,7 @@
         android:text="Book Author: "
         android:textSize="18sp" />
 
+  // this is the text view for the user's name
     <TextView
         android:id="@+id/txtUser"
         android:layout_width="wrap_content"
@@ -69,6 +73,7 @@
         android:text="User's Name:"
         android:textSize="18sp" />
 
+   // this is the button for the add book option
     <Button
         android:id="@+id/addButton"
         android:layout_width="200dp"
