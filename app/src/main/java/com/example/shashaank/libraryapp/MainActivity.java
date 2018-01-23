@@ -21,26 +21,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+// casting variables to their respective types
         addBookPage = (Button)findViewById(R.id.btn1);
         viewBookPage = (Button)findViewById(R.id.btn2);
         aboutUs = (Button)findViewById(R.id.btn3);
 
         mydb = new DBHandler(this);
-
+// button to open add book page
         addBookPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openAddBook();
             }
         });
-
+// button to view books
         viewBookPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             openViewBook();
             }
         });
+        // button to view about us page
         aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+//toast method
     public void Toastmsg(String message){
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_LONG).show();
     }
+    // the three methods are to open their respective pages
      public void openAddBook(){
         Intent intent = new Intent(this, addBook.class);
         startActivity(intent);
