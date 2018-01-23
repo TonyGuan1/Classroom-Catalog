@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-// nothing here because this page does not do anything only 
+// nothing here because this page does not have any functionaliy, it only displays text about the project
 // text is displayed using the xml files
 
 public class AboutUsPage extends AppCompatActivity {
