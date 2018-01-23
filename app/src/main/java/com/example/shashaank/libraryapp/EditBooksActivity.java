@@ -42,7 +42,7 @@ public class EditBooksActivity extends AppCompatActivity {
         editUser = (EditText) findViewById(R.id.editable_user);
         mydb = new DBHandler(this);
 
-        //get intent from other class
+        //get intent from other class for the extra information
         Intent recieveIntent = getIntent();
         selectId = recieveIntent.getIntExtra("id", -1);
         selectName = recieveIntent.getStringExtra("name");
@@ -54,6 +54,7 @@ public class EditBooksActivity extends AppCompatActivity {
         editBook.setText(selectName);
         editAuth.setText(selectAuth);
         editUser.setText(selectUser);
+        // setting edit text to the fields received from intent
 
         if (selectLocation.equals("Available")){
             toggleCheckout.setChecked(false);
@@ -61,6 +62,7 @@ public class EditBooksActivity extends AppCompatActivity {
         else{
             toggleCheckout.setChecked(true);
         }
+        // a method to work with toggle button for checking in and out the book
 
         toggleCheckout.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -89,6 +91,7 @@ public class EditBooksActivity extends AppCompatActivity {
                  openMainPage();
 
                  Toastmsg("Book has been Updated!");
+                // sending data and message to dbhandler when fields are to be updated
             }
         });
 
@@ -98,10 +101,10 @@ public class EditBooksActivity extends AppCompatActivity {
                 mydb.deleteData(selectId, selectName, selectAuth, selectUser, selectLocation);
                 openMainPage();
                 Toastmsg("Book has been Deleted");
-
+                // method to delete a certain row from the table
             }
         });
-
+// button methods to open pages
         btnViewBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,10 +119,12 @@ public class EditBooksActivity extends AppCompatActivity {
             }
         });
     }
+    // toast method
     public void Toastmsg(String message){
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_LONG).show();
     }
+    // methods to open pages
     public void openViewBook(){
         Intent intent = new Intent(this, viewBooks.class);
         startActivity(intent);
