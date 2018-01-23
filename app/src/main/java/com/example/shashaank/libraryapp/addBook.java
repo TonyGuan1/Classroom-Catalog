@@ -32,6 +32,7 @@ public class addBook extends AppCompatActivity {
 
 
 // using shared preferences to fix a bug where the first field added after install was blank
+        // before the first time adding a book resulted in a blank field for some reason
         mydb = new DBHandler(this);
         SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
         boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
